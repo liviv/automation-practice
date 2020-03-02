@@ -1,4 +1,4 @@
-package lesson09.a_own_expected_condtition;
+package lesson10.a_own_expected_condtition;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.*;

@@ -1,4 +1,4 @@
-package lesson09.a_own_expected_condtition;
+package lesson10.a_own_expected_condtition;
 
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.By;
