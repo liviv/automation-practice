@@ -23,7 +23,6 @@ public class CheckTipsStreamAPI extends BaseTest {
 
       List<WebElement> dressTips = (new WebDriverWait(driver, 15))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[@id=\"index\"]/div[2]/ul/li")));
-        System.out.println(dressTips.size());
         Assert.assertTrue("Tips do not contain text 'Dress'",dressTips.stream().allMatch(a->a.getText().contains("Dress")));
         driver.findElement(By.id("search_query_top"))
                 .clear();
