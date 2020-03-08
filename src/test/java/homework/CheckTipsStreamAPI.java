@@ -1,7 +1,6 @@
-package lesson09.homework;
+package homework;
 
 import lesson09.d_add_basetest.BaseTest;
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -21,9 +20,9 @@ public class CheckTipsStreamAPI extends BaseTest {
         driver.findElement(By.id("search_query_top"))
                 .sendKeys("Dress");
 
-      List<WebElement> dressTips = (new WebDriverWait(driver, 15))
+        List<WebElement> dressTips = (new WebDriverWait(driver, 15))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[@id=\"index\"]/div[2]/ul/li")));
-        Assert.assertTrue("Tips do not contain text 'Dress'",dressTips.stream().allMatch(a->a.getText().contains("Dress")));
+        Assert.assertTrue("Tips do not contain text 'Dress'", dressTips.stream().allMatch(a -> a.getText().contains("Dress")));
         driver.findElement(By.id("search_query_top"))
                 .clear();
 

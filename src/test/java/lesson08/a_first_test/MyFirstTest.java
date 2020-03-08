@@ -32,18 +32,6 @@ public class MyFirstTest {
     }
 
     @Test(timeout = 5000l)
-    public void verifyFirstTipIsCorrect_viaAssertTrue() {
-        driver.findElement(By.id("search_query_top"))
-                .clear();
-        driver.findElement(By.id("search_query_top"))
-                .sendKeys("Dress");
-
-        Assert.assertTrue("First tip text was wrong",
-                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
-                        .getText().contains("Dress1"));
-    }
-    
-    @Test(timeout = 5000l)
     public void verifyFirstTipIsCorrect() {
         driver.findElement(By.id("search_query_top"))
                 .clear();
@@ -55,5 +43,17 @@ public class MyFirstTest {
                         .findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
                         .getText(),
                 CoreMatchers.containsString("Dress"));
+    }
+
+    @Test(timeout = 5000l)
+    public void verifyFirstTipIsCorrect_viaAssertTrue() {
+        driver.findElement(By.id("search_query_top"))
+                .clear();
+        driver.findElement(By.id("search_query_top"))
+                .sendKeys("Dress");
+
+        Assert.assertTrue("First tip text was wrong",
+                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
+                        .getText().contains("Dress"));
     }
 }

@@ -1,4 +1,4 @@
-package lesson10.lesson09.f_add_simpleapi;
+package lesson09.f_add_simpleapi;
 
 import java.util.List;
 import java.util.function.Function;

@@ -1,4 +1,4 @@
-package lesson10.lesson09.b_take_care_about_cachelookup;
+package lesson09.c_page_class_with_locators;
 
 import java.util.concurrent.TimeUnit;
 
@@ -7,12 +7,10 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -38,43 +36,46 @@ public class MyFirstTest {
 
     @Test
     public void verifyFirstTipIsCorrectlyUpdatedAfterEnteringNewQuery() {
-        LandingPage landingPage = new LandingPage(driver);
+        LandingPage landingPage = new LandingPage(/*driver*/);
         String query1 = "Dress";
         String query2 = "T-shirt";
 
         landingPage.searchFor(query1);
         (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.visibilityOf(landingPage.firstTip));
-        Assert.assertThat(landingPage.firstTip.getText(),
+                .until(ExpectedConditions.visibilityOfElementLocated(landingPage.firstTip));
+        Assert.assertThat(landingPage.getFirstTipText(),
                 CoreMatchers.containsString("Dress"));
 
         landingPage.searchFor(query2);
 
         (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.textToBePresentInElement(landingPage.firstTip, "T-shirt"));
+                .until(ExpectedConditions.textToBePresentInElementLocated(landingPage.firstTip, "T-shirt"));
 
         Assert.assertThat(
-                landingPage.firstTip.getText(),
+                landingPage.getFirstTipText(),
                 CoreMatchers.containsString("T-shirt"));
     }
 
     class LandingPage {
 
-        @FindBy(id = "search_query_top")
-        @CacheLookup
-        private WebElement searchBox;
+        //Don't do so
+//        private WebElement searchBox = driver.findElement(By.id("search_query_top"));
+//        private WebElement firstTip = driver.findElement(By.xpath());
 
-        @FindBy(xpath = "//*[@id=\"index\"]/div[2]/ul/li[1]")
-//        @CacheLookup
-        private WebElement firstTip;
-
-        public LandingPage(WebDriver driver) {
-            PageFactory.initElements(driver, this);
-        }
+        private By searchBox = By.id("search_query_top");
+        private By firstTip = By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]");
 
         void searchFor(String searchQuery) {
-            searchBox.clear();
-            searchBox.sendKeys(searchQuery);
+            $(searchBox).clear();
+            $(searchBox).sendKeys(searchQuery);
+        }
+
+        String getFirstTipText() {
+            return $(firstTip).getText();
+        }
+
+        WebElement $(By locator) {
+            return driver.findElement(locator);
         }
     }
 }

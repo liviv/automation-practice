@@ -1,4 +1,4 @@
-package lesson10.lesson09.a_page_factory_and_lazy_proxy_lements;
+package lesson09.a_page_factory_and_lazy_proxy_lements;
 
 import java.util.concurrent.TimeUnit;
 

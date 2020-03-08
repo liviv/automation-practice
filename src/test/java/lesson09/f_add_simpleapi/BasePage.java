@@ -1,4 +1,4 @@
-package lesson10.lesson09.f_add_simpleapi;
+package lesson09.f_add_simpleapi;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

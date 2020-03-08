@@ -1,4 +1,4 @@
-package lesson10.lesson09.d_add_basetest;
+package lesson09.f_add_simpleapi;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
@@ -10,7 +10,8 @@ public class MyFirstTest extends BaseTest {
 
     @Test
     public void verifyFirstTipIsCorrectlyUpdatedAfterEnteringNewQuery() {
-        LandingPage landingPage = new LandingPage(/*driver*/);
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.openPage();
         String query1 = "Dress";
         String query2 = "T-shirt";
 

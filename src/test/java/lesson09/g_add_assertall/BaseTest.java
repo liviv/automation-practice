@@ -1,4 +1,4 @@
-package lesson10.lesson09.g_add_assertall;
+package lesson09.g_add_assertall;
 
 import java.util.ArrayList;
 import java.util.List;

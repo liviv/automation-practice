@@ -50,7 +50,8 @@ public class MyFirstTest {
                 .clear();
         driver.findElement(By.id("search_query_top"))
                 .sendKeys("T-shirt");
-        waitForElementDisappearing(By.xpath("//*[@id='index']/div[2]/ul/li[position()=1 and contains(text(), 'Dress')]"), 5000l);
+        waitForElementDisappearing(By.xpath("//*[@id='index']/div[2]/ul/li[position()=1 and contains(text(), 'Dress')]"),
+                5000l);
         Assert.assertThat(
                 driver
                         .findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
@@ -74,8 +75,8 @@ public class MyFirstTest {
     void waitForElementDisappearing(By locator, long timeout) {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         long startTime = System.currentTimeMillis();
-        while(!driver.findElements(locator).isEmpty()) {
-            if(System.currentTimeMillis() - startTime > timeout) {
+        while (!driver.findElements(locator).isEmpty()) {
+            if (System.currentTimeMillis() - startTime > timeout) {
                 driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                 throw new TimeoutException("Element is still present");
             }

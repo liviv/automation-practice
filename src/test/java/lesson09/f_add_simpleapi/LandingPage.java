@@ -1,9 +1,8 @@
-package lesson10.lesson09.g_add_assertall;
-
-import static lesson08.d_add_assertall.Conditions.CLICKABLE;
+package lesson09.f_add_simpleapi;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 class LandingPage extends BasePage {
 
@@ -20,7 +19,7 @@ class LandingPage extends BasePage {
     }
 
     void searchFor(String searchQuery) {
-        $(searchBox, CLICKABLE).clear();
+        $(searchBox, ExpectedConditions::elementToBeClickable).clear();
         $(searchBox).sendKeys(searchQuery);
 
         //$$(tips, 5);
@@ -28,9 +27,5 @@ class LandingPage extends BasePage {
 
     String getFirstTipText() {
         return $(firstTip).getText();
-    }
-
-    String getFirstTipText(int expTipsNumber) {
-        return $$(tips, expTipsNumber).get(0).getText();
     }
 }
