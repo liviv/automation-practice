@@ -1,4 +1,4 @@
-package homework;
+package homework.tests;
 
 import lesson09.d_add_basetest.BaseTest;
 import org.junit.Assert;
